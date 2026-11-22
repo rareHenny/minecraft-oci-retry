@@ -43,7 +43,16 @@ def main():
         private_key_file_location=None,
         private_key_content=api_key,
     )
-    client = oci.resource_manager.ResourceManagerClient({"region": REGION}, signer=signer)
+    # OCI validates the client config even when an API-key Signer is supplied.
+    # Use key_content instead of writing the private key to disk.
+    client_config = {
+        "region": REGION,
+        "tenancy": required("OCI_TENANCY_OCID"),
+        "user": required("OCI_USER_OCID"),
+        "fingerprint": required("OCI_KEY_FINGERPRINT"),
+        "key_content": api_key,
+    }
+    client = oci.resource_manager.ResourceManagerClient(client_config, signer=signer)
 
     stack = client.get_stack(stack_id).data
     if stack.display_name != STACK_NAME:
