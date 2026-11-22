@@ -2,6 +2,9 @@
 name: Scheduler Test
 
 on:
+  push:
+    paths:
+      - '.github/workflows/schedule-test.yml'
   schedule:
     - cron: '*/5 * * * *'
   workflow_dispatch:
@@ -12,7 +15,6 @@ jobs:
     steps:
       - name: Verify automatic trigger
         run: |
-          echo "GitHub scheduler test"
           echo "Triggered by: ${{ github.event_name }}"
           echo "UTC time: $(date -u)"
           echo "Success!"
