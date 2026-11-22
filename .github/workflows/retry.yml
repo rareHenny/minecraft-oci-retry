@@ -3,7 +3,7 @@ name: Oracle Minecraft A1 capacity retry
 on:
   schedule:
     # Every 15 minutes, offset to avoid heavy load at the top of each hour (UTC).
-    - cron: '*/15 * * * *'
+    - cron: '7,22,37,52 * * * *'
   workflow_dispatch:
 
 # Needed only to disable this workflow after Oracle reports a successful apply.
