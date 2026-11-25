@@ -11,7 +11,7 @@ import sys
 import oci
 
 
-STACK_NAME = "Minecraft-Project-Infinity"
+STACK_NAME = "ATM10-Sky-Server"
 REGION = "eu-stockholm-1"
 ACTIVE_STATES = {"ACCEPTED", "IN_PROGRESS", "CANCELING"}
 CAPACITY_INDICATORS = (
